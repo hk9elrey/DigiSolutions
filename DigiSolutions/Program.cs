@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DigiSolutionsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 var app = builder.Build();
 

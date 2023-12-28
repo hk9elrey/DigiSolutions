@@ -166,7 +166,11 @@ public partial class DigiSolutionsContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("name");
-            entity.Property(e => e.Password)
+			entity.Property(e => e.Email)
+				.HasMaxLength(50)
+				.IsUnicode(false)
+				.HasColumnName("Email");
+			entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("password");
@@ -180,7 +184,8 @@ public partial class DigiSolutionsContext : DbContext
                 .HasForeignKey(d => d.Role)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__user__role__5070F446");
-        });
+			
+		});
 
         OnModelCreatingPartial(modelBuilder);
     }
