@@ -30,5 +30,10 @@ namespace DigiSolutions.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-    }
+		public IActionResult Signup()
+		{
+			return View();
+		}
+
+	}
 }
