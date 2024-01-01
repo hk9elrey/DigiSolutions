@@ -15,6 +15,7 @@ namespace DigiSolutions.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.data = HttpContext.Session.GetString("User");
             return View();
         }
 

@@ -30,6 +30,7 @@ namespace DigiSolutions.Controllers
             }
             else
             {
+                HttpContext.Session.SetString("User", user);
                 return RedirectToAction("Index", "Home");
             }
         }
