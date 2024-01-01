@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DigiSolutions.Models;
+using Microsoft.Extensions.Hosting;
 
 namespace DigiSolutions.Controllers
 {
@@ -13,8 +14,12 @@ namespace DigiSolutions.Controllers
     {
         private readonly DigiSolutionsContext _context;
 
-        public ProductsController(DigiSolutionsContext context)
+        private readonly IWebHostEnvironment _hostEnvironment;
+
+        public ProductsController(DigiSolutionsContext context , IWebHostEnvironment
+        hostEnvironment)
         {
+            this._hostEnvironment = hostEnvironment;
             _context = context;
         }
 
@@ -56,10 +61,23 @@ namespace DigiSolutions.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Stock,Description,Image,CategoryId")] Product product)
+        public async Task<IActionResult> Create(IFormFile ImageFile , Product product)
         {
             if (ModelState.IsValid)
             {
+
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                string extension = Path.GetExtension(ImageFile.FileName);
+                string _filename = fileName + extension;
+                product.Image = _filename;
+                string path = Path.Combine(wwwRootPath + "/Images/", _filename);
+                product.Image = "/Images/" + _filename;
+
+                FileStream fileStream = new FileStream(path, FileMode.Create);
+                await ImageFile.CopyToAsync(fileStream);
+
+                //Insert record
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -90,7 +108,7 @@ namespace DigiSolutions.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Stock,Description,Image,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, IFormFile ImageFile, [Bind("Id,Name,Price,Stock,Description,Image,CategoryId")] Product product)
         {
             if (id != product.Id)
             {
@@ -101,6 +119,17 @@ namespace DigiSolutions.Controllers
             {
                 try
                 {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    string _filename = fileName + extension;
+                    product.Image = _filename;
+                    string path = Path.Combine(wwwRootPath + "/Images/", _filename);
+                    product.Image = "/Images/" + _filename;
+
+                    FileStream fileStream = new FileStream(path, FileMode.Create);
+                    await ImageFile.CopyToAsync(fileStream);
+
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
