@@ -5,6 +5,7 @@ namespace DigiSolutions.Controllers
 {
     public class AuthenticationController : Controller
     {
+
 		DigiSolutionsContext db;
         public AuthenticationController(DigiSolutionsContext context)
         {
@@ -19,6 +20,8 @@ namespace DigiSolutions.Controllers
         [HttpPost]
         public IActionResult Index(string user , string pass)
         {
+
+
 			User data = db.Users.Where((u) => u.Email == user && u.Password == pass).FirstOrDefault();
             if (data == null)
             {
@@ -34,6 +37,24 @@ namespace DigiSolutions.Controllers
 		{
 			return View();
 		}
+
+        [HttpPost]
+        public IActionResult Signup(User user)
+        {
+            if(ModelState.IsValid)
+            {
+				user.Address = user.Address;
+				db.Users.Add(user);
+				db.SaveChanges();
+				return RedirectToAction("Index", "Home");
+			}
+			else
+            {
+				return View(user);
+			}   
+        }
+
+
 
 	}
 }

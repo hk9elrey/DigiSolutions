@@ -1,27 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DigiSolutions.Models;
 
 public partial class User
 {
-    public int Id { get; set; }
+	[Required]
 
-    public string? Name { get; set; }
+	public int Id { get; set; }
+	[Required]
 
-    public string? Email { get; set; }
+	public string? Name { get; set; }
 
-    public string? Password { get; set; }
+	[Required]
+	public string? Email { get; set; }
+	public string? Password { get; set; }
 
-    public string? Phone { get; set; }
+	[NotMapped]
+	[Compare(nameof(Password),ErrorMessage = "Re entered password doesn't match")]
+	public string? ReenterPassword { get; set; }
 
-    public string? Address { get; set; }
+	[Required]
 
-    public int? Role { get; set; }
+	public string? Phone { get; set; }
+	[Required]
 
-    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+	public string? Address { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+	public int? Role { get; set; }
 
-    public virtual Role? RoleNavigation { get; set; }
+	public virtual ICollection<Cart>? Carts { get; set; } = new List<Cart>();
+
+	public virtual ICollection<Order>? Orders { get; set; } = new List<Order>();
+
+	public virtual Role? RoleNavigation { get; set; }
 }
