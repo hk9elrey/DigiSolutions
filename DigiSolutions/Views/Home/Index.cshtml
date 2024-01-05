@@ -4,9 +4,37 @@
 
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
 }
+<html>
+    <head>
+        <style>
 
-<!-- header -->
-<header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style="padding-top: 104px;">
+        /* header */
+        #header {
+            background-image: url(~/Images/R.jpg) !important;
+        }
+
+        .carousel-inner h1 {
+            font-size: 60px;
+            font-family: var(--lg-font);
+        }
+
+        .carousel-item .btn {
+            border-color: #fff !important;
+        }
+
+            .carousel-item .btn:hover {
+                border-color: var(--pink) !important;
+            }
+
+        </style>
+
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css">
+
+    </head>
+    
+    <!-- header -->
+<header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style="padding-top: 104px;" >
     <div class="container h-100 d-flex align-items-center carousel-inner">
         <div class="text-center carousel-item active">
             <h2 class="text-capitalize text-white">Fresh Collection</h2>
@@ -364,3 +392,4 @@
     </div>
 </section>
 <!-- end of newsletter -->
+</html>

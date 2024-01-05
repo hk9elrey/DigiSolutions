@@ -35,16 +35,14 @@ body {
 }
 
 /* navbar */
-.navbar {
+.navbar{
     -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
 }
-
-.navbar-brand img {
+.navbar-brand img{
     width: 30px;
 }
-
-.navbar-brand span {
+.navbar-brand span{
     letter-spacing: 2px;
     font-family: var(--lg-font);
 }
@@ -58,25 +56,23 @@ body {
 }
 
 /* header */
-#header {
-    background: url(~/images/main_bg.jpeg) no-repeat;
+#header{
+    background-image: url(../Images/cover.jpg);
+    
 }
-
-.carousel-inner h1 {
+.carousel-inner h1{
     font-size: 60px;
     font-family: var(--lg-font);
 }
-
-.carousel-item .btn {
-    border-color: #fff !important;
+.carousel-item .btn{
+    border-color: #fff!important;
+}
+.carousel-item .btn:hover{
+    border-color: var(--pink)!important;
 }
 
-    .carousel-item .btn:hover {
-        border-color: var(--pink) !important;
-    }
-
 /* title */
-.title h2::before {
+.title h2::before{
     position: absolute;
     content: "";
     width: 4px;
@@ -85,22 +81,20 @@ body {
     left: -20px;
     top: 50%;
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 /* Featured */
-.active-filter-btn {
-    background-color: var(--pink) !important;
-    color: #fff !important;
-    border-color: var(--pink) !important;
+.active-filter-btn{
+    background-color: var(--pink)!important;
+    color: #fff!important;
+    border-color: var(--pink)!important;
 }
-
-.filter-button-group .btn:hover {
-    color: #fff !important;
+.filter-button-group .btn:hover{
+    color: #fff!important;
 }
-
-.collection-img span {
+.collection-img span{
     top: 20px;
     right: 20px;
     width: 46px;
@@ -109,16 +103,14 @@ body {
 }
 
 /* Special Collection */
-.special-img span {
+.special-img span{
     top: 20px;
     right: 20px;
 }
-
-.special-list .btn {
-    padding: 8px 20px !important;
+.special-list .btn{
+    padding: 8px 20px!important;
 }
-
-.special-img img {
+.special-img img{
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
