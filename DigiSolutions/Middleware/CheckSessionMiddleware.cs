@@ -18,7 +18,7 @@ public class CheckSessionMiddleware
             var path = context.Request.Path.Value;
             if (!path.StartsWith("/Home") && !path.StartsWith("/Authentication"))
             {
-                context.Response.Redirect("/Home/Index");
+                context.Response.Redirect("/Authentication/Index");
             }
             else
             {

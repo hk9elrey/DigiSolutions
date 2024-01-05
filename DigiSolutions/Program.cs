@@ -1,6 +1,8 @@
 using DigiSolutions.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using Microsoft.AspNetCore.Builder;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DigiSolutionsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
@@ -10,6 +12,7 @@ builder.Services.AddSession();
 
 var app = builder.Build();
 app.UseStaticFiles();
+
 
 app.UseSession();
 app.UseMiddleware<CheckSessionMiddleware>();

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DigiSolutions.Models.Product>
+@{
+    ViewData["Title"] = "ViewProducts";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+
+<h1>ViewProducts</h1>
+@foreach(var item in Model)
+{
+    <div class="">
+        <div class="card mb-4 shadow-sm">
+            <img src="@Url.Content(item.Image)" height="auto" width="150" />
+
+            <div class="card-body">
+                <p class="card-text">@item.Name</p>
+                <p class="card-text">@item.Price</p>
+                <a class="btn " href="~/Home/productdetail/@item.Id">View Product</a>
+               </div>
+               
+        </div>
+    </div>
+
+}
+
+

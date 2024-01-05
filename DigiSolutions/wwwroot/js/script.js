@@ -19,7 +19,7 @@ function resetFilterBtns(){
 }
 
 
-
+//hello
 $('#lightSlider').lightSlider({
   gallery: true,
   item: 1,
