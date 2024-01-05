@@ -1,3 +1,4 @@
+
 // init Isotope
 var $grid = $('.collection-list').isotope({
   // options
@@ -16,3 +17,13 @@ function resetFilterBtns(){
     $(this).removeClass('active-filter-btn');
   });
 }
+
+
+
+$('#lightSlider').lightSlider({
+  gallery: true,
+  item: 1,
+  loop: true,
+  slideMargin: 0,
+  thumbItem: 6
+});

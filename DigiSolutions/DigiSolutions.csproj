@@ -7,12 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\.DS_Store" />
+    <None Include="wwwroot\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\images\.DS_Store" />
+    <None Include="wwwroot\js\.DS_Store" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
     <None Include="wwwroot\js\demo\chart-area-demo.js" />
     <None Include="wwwroot\js\demo\chart-bar-demo.js" />
     <None Include="wwwroot\js\demo\chart-pie-demo.js" />
     <None Include="wwwroot\js\demo\datatables-demo.js" />
+    <None Include="wwwroot\js\jquery-3.6.0.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\popper.js" />
     <None Include="wwwroot\js\sb-admin-2.js" />
     <None Include="wwwroot\js\sb-admin-2.min.js" />
+    <None Include="wwwroot\js\script.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\scss\navs\_global.scss" />
     <None Include="wwwroot\scss\navs\_sidebar.scss" />
