@@ -53,7 +53,7 @@ body{
 
 /* header */
 #header{
-    background: url(../images/main_bg.jpeg)  no-repeat;
+    background-image: url(../Images/cover.jpg);
     
 }
 .carousel-inner h1{
