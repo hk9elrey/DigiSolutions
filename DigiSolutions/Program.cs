@@ -1,6 +1,8 @@
 using DigiSolutions.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using Microsoft.AspNetCore.Builder;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DigiSolutionsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
@@ -9,8 +11,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 var app = builder.Build();
+app.UseStaticFiles();
+
 
 app.UseSession();
+app.UseMiddleware<CheckSessionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -21,14 +26,24 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "custom",
+        pattern: "admin",
+        defaults: new { controller = "Home", action = "Dashboard" });
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+
+
 
 app.Run();

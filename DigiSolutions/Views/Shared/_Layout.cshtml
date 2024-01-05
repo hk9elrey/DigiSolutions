@@ -17,6 +17,7 @@
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"   />
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
@@ -339,7 +340,9 @@
 
                 </nav>
                 <div>
-                @RenderBody();
+                <div class="m-2" id="renderbody">
+                        @RenderBody();
+                </div>
                 </div>
 
 

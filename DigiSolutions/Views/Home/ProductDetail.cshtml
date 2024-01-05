@@ -1,0 +1,54 @@
+﻿@model DigiSolutions.Models.Product
+
+
+
+@{
+    ViewData["Title"] = "ProductDetail";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+
+<h1>ProductDetail</h1>
+
+<div class="row">
+    @if(Model != null)
+    {
+   
+        <img src="@Url.Content(Model.Image)"/>
+        <h1>Name: @Model.Name</h1>
+        <h1>Price: $@Model.Price</h1>
+        <h1>Left in stock @Model.Stock</h1>
+        <h1>Description: @Model.Description</h1>
+        @* <h1>Catagory: @Model.Category.Name</h1> *@
+            <form asp-action="AddToCart" method="post">
+                <div id="quantity-buttons">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" name="price" value="@Model.Price" />
+                    <button type="button" onclick="Decrement()" id="cartminusbtn" class="">-</button>
+                    <input type="text" name="cartcount" style="border:none;text-align:center;width:20px" value="0" id="count" />
+                    <button type="button" onclick="Increment()" id="cartaddbtn">+</button>
+                </div>
+                <button type="submit" class="btn">Add to Cart</button>
+            </form>
+
+    
+    }
+    
+       
+
+    <script>
+        var count = 0;
+        function Increment() {
+            count++;
+            document.getElementById("count").value = count;
+        }
+
+        function Decrement() {
+            if (count > 0) {
+                count--;
+                document.getElementById("count").value = count;
+            }
+        }
+    </script>
+    
+</div>
+

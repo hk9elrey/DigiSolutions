@@ -8,10 +8,14 @@ namespace DigiSolutions.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        DigiSolutionsContext db;
+        public HomeController(DigiSolutionsContext context)
         {
-            _logger = logger;
+            db = context;
+
         }
+
+      
 
         public IActionResult Index()
         {
@@ -23,7 +27,6 @@ namespace DigiSolutions.Controllers
         {
             return View();
         }
-
 		public IActionResult Dashboard()
 		{
 			return View();
@@ -34,5 +37,37 @@ namespace DigiSolutions.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public ActionResult ViewProducts()
+        {
+            var products=db.Products.ToList();
+            return View(products);
+        }
+        public ActionResult ProductDetail(int? id)
+        {
+            var product = db.Products.Find(id);
+            
+            return View(product);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddToCart(int? cartcount, int? id,double? price)
+        {
+            var userid = int.Parse(HttpContext.Session.GetString("UserId"));
+          
+
+            db.Add(new Cart
+            {
+                ProductId = id,
+                Quantity = cartcount,
+                TotalPrice = (price * cartcount),
+                UserId = userid,
+
+
+            });
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("ProductDetail", new { id = id });
+        }
+
     }
 }

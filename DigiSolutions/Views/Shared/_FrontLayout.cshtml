@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css">
     <!-- custom css -->
     <link rel="stylesheet" href="~/css/main.css">
+
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+          rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+
 </head>
 <body>
 
@@ -25,7 +31,7 @@
             <div class="order-lg-2 nav-btns">
                 <button type="button" class="btn position-relative">
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
                 </button>
                 <button type="button" class="btn position-relative">
                     <i class="fa fa-heart"></i>
@@ -34,6 +40,10 @@
                 <button type="button" class="btn position-relative">
                     <i class="fa fa-search"></i>
                 </button>
+                <a href="~/Authentication/Index" type="button" class="btn position-relative btn-primary">
+                    Login
+                </a>
+
             </div>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -46,7 +56,7 @@
                         <a class="nav-link text-uppercase text-dark" href="#header">home</a>
                     </li>
                     <li class="nav-item px-2 py-2">
-                        <a class="nav-link text-uppercase text-dark" href="#featured">Products</a>
+                        <a class="nav-link text-uppercase text-dark" href="~/Home/Viewproducts">Products</a>
                     </li>
                     <li class="nav-item px-2 py-2">
                         <a class="nav-link text-uppercase text-dark" href="#SpecialCollection">Special Collection</a>
@@ -62,8 +72,10 @@
         </div>
     </nav>
     <!-- end of navbar -->
-   
+    <div style="margin-top:140px">
+
     @RenderBody();
+    </div>
     <!-- footer -->
     <footer class="bg-dark py-5">
         <div class="container">
@@ -166,5 +178,6 @@
     <script src="~/bootstrap/js/bootstrap.min.js"></script>
     <!-- custom js -->
     <script src="~/js/script.js"></script>
+
 </body>
 </html>

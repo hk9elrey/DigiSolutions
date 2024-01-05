@@ -1,0 +1,26 @@
+﻿<!-- ShoppingCart.razor -->
+<div>
+
+    <div id="quantity-buttons">
+        <button @onclick="Decrement">-</button>
+        <span id="count">@count</span>
+        <button @onclick="Increment">+</button>
+    </div>
+</div>
+
+@code {
+    private int count = 0;
+
+    private void Increment()
+    {
+        count++;
+    }
+
+    private void Decrement()
+    {
+        if (count > 0)
+        {
+            count--;
+        }
+    }
+}
