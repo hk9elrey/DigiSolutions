@@ -68,6 +68,6 @@ namespace DigiSolutions.Controllers
 
             return RedirectToAction("ProductDetail", new { id = id });
         }
-
+        
     }
 }

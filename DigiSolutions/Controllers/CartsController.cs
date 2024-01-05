@@ -169,5 +169,12 @@ namespace DigiSolutions.Controllers
         {
           return (_context.Carts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public ActionResult Cart()
+        {
+            var userid = int.Parse(HttpContext.Session.GetString("UserId"));
+            var cart = _context.Carts.Where(c => c.UserId == userid).Include(u=>u.Product).ToList();
+            return View(cart);
+        }
     }
 }

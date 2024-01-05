@@ -18,6 +18,7 @@ public class CheckSessionMiddleware
             var path = context.Request.Path.Value;
             if (!path.StartsWith("/Home") && !path.StartsWith("/Authentication"))
             {
+               
                 context.Response.Redirect("/Authentication/Index");
             }
             else
@@ -29,9 +30,9 @@ public class CheckSessionMiddleware
             //context.Response.Redirect("/Authentication/Index");
 
         }
+        
         else
         {
-            // If the session is set, continue with the next middleware in the pipeline
             await _next(context);
         }
     }
